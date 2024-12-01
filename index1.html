@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buckshot Royale</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <header>
+        <h1>Buckshot Royale</h1>
+        <div id="turn-indicator"></div>
+        <div id="ammo-notification" class="modal hidden">
+            <h2>New Ammunition Loaded!</h2>
+            <p id="ammo-details"></p>
+        </div>
+    </header>
+    <main>
+        <div id="game-layout">
+            <div id="player1">
+                <img src="dealer.jpeg" alt="Dealer" class="player-image">
+                <div class="energy-bars" id="player1-energy"></div>
+            </div>
+            <div id="table">
+                <img src="table.png" alt="Table" class="table-image">
+                <img id="gun" src="gun.webp" alt="Gun">
+            </div>
+            <div id="player2">
+                <img src="player.jpg" alt="Player" class="player-image">
+                <div class="energy-bars" id="player2-energy"></div>
+            </div>
+        </div>
+        <div id="actions">
+            <button id="shoot-self" class="action-button">Shoot Yourself</button>
+            <button id="shoot-opponent" class="action-button">Shoot Opponent</button>
+        </div>
+        <audio id="gunshot-live" src="temp gunshot_live.wav" preload="auto"></audio>
+        <audio id="gunshot-blank" src="temp gunshot_blank.wav" preload="auto"></audio>
+    </main>
+    <script src="script1.js"></script>
+</body>
+</html>

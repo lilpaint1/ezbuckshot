@@ -1,0 +1,254 @@
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#game-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
+    gap: 10px;
+}
+
+#player1, #player2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-image {
+    width: 150px;
+    height: auto;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.energy-bars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.energy {
+    width: 20px;
+    height: 40px;
+}
+
+#table {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border: 5px solid white;
+    border-radius: 15px;
+}
+
+#gun {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    transform-origin: center bottom;
+    transition: transform 0.5s ease-in-out;
+}
+
+#actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action-button {
+    background: linear-gradient(45deg, #ff6b6b, #f94d4d);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-button:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+#turn-indicator {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    width: 300px;
+    display: none;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+#bullet-pattern {
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+#bullet-pattern div {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+#gun {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform-origin: center; /* Rotate around its center */
+    transform: translate(-50%, -50%); /* Adjust for the center */
+}
+/* Gun animation */
+/* Gun animation */
+#gun {
+    animation: rotateGun 2s infinite alternate ease-in-out;
+}
+
+@keyframes rotateGun {
+    0% {
+        transform: translate(-50%, -50%) rotate(-15deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(15deg);
+    }
+}
+
+/* Player images bounce */
+.player-image {
+    animation: bouncePlayer 1.5s infinite ease-in-out;
+}
+
+@keyframes bouncePlayer {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Table shimmer effect */
+.table-image {
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* Turn indicator glow */
+#turn-indicator {
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
+    }
+    50% {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    }
+    100% {
+        text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
+    }
+}
+
+/* Buttons pop effect */
+.action-button {
+    animation: buttonPop 1s infinite;
+}
+
+@keyframes buttonPop {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Ammo notification flash */
+.modal {
+    animation: flashModal 1.5s infinite alternate;
+}
+
+@keyframes flashModal {
+    0% {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    100% {
+        background-color: rgba(255, 0, 0, 0.9);
+    }
+}
+
+/* Energy bar pulse */
+.energy {
+    animation: pulseEnergy 1.5s infinite;
+}
+
+@keyframes pulseEnergy {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Stop animations when the game is ready */
+.no-animation * {
+    animation: none !important;
+}
